@@ -4,11 +4,12 @@
 public class Eight_Queens {
     int count = 0;
 
-    public Eight_Queens(int n){
+    public Eight_Queens(){
 
     }
 
-    public void placeNQueensAndFCandMRV(int X[] , int N){
+    public void placeNQueensAndFCandMRV(int X[] ){
+        int N = X.length;
 
         if( noMoreRow(X) ){
             count++;
@@ -20,7 +21,7 @@ public class Eight_Queens {
             return;
         }
 
-        int mrvrow = selectMRVRow(X,N);
+        int mrvrow = selectMRVRow(X);
 
         int board[][] = new int [N][N];
         for(int i =0;i<N;i++){
@@ -59,7 +60,7 @@ public class Eight_Queens {
                     continue;
 
                 }
-                placeNQueensAndFCandMRV(X,N);
+                placeNQueensAndFCandMRV(X);
                 X[mrvrow] = 0;
             }
         }
@@ -129,7 +130,8 @@ public class Eight_Queens {
         return true;
     }
 
-    public int selectMRVRow(int X[], int N) {
+    public int selectMRVRow(int X[]) {
+        int N = X.length;
         int board[][] = new int [N][N];
         for(int i =0;i<N;i++){
             if(X[i] != 0){
@@ -185,14 +187,14 @@ public class Eight_Queens {
     }
 
     public static void main(String args[]){
-        int x[] = new int [8];
+        int x[] = new int [5];
 //        x[4] = 4;
 //        x[0] = 1;
 //        x[1] = 3;
 //        x[2] = 7;
 //        x[3] = 2;
 //        new Eight_Queens(8).selectMRVRow(x, 8);
-        new Eight_Queens(8).placeNQueensAndFCandMRV(x, 8);
+        new Eight_Queens().placeNQueensAndFCandMRV(x);
     }
 
 
