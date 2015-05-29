@@ -1,11 +1,22 @@
+import java.util.Vector;
+
 /**
  * Created by Bimurto on 15-May-15.
  */
 public class Eight_Queens {
     int count = 0;
-
+    Vector<Result> resultset = new Vector<>();
     public Eight_Queens(){
 
+    }
+
+    class Result{
+        int x[];
+        int n;
+        Result(int n){
+            x = new int[n];
+            this.n = n;
+        }
     }
 
     public void placeNQueensAndFCandMRV(int X[] ){
@@ -13,10 +24,13 @@ public class Eight_Queens {
 
         if( noMoreRow(X) ){
             count++;
+            Result r = new Result(N);
             System.out.print(count+" : ");
             for(int i=0;i<N;i++){
                 System.out.print(X[i] +" ");
+                r.x[i] = X[i];
             }
+            resultset.add(r);
             System.out.println();
             return;
         }
@@ -187,7 +201,7 @@ public class Eight_Queens {
     }
 
     public static void main(String args[]){
-        int x[] = new int [5];
+        int x[] = new int [11];
 //        x[4] = 4;
 //        x[0] = 1;
 //        x[1] = 3;
